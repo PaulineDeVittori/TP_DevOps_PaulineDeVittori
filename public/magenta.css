@@ -18,7 +18,7 @@ body {
     padding: 10px 20px;
     font-size: 18px;
     cursor: pointer;
-    background-color: #ff00ff;
+    background-color: #c300c3;
     color: white;
     border: none;
     border-radius: 5px;
@@ -26,7 +26,7 @@ body {
   }
   
   button:hover {
-    background-color: #bc00bc;
+    background-color: #700070;
   }
   
   .color-display {
@@ -46,6 +46,16 @@ body {
     color: #333;
   }
   
+  .magenta {
+    color: #ff00ff;
+    font-weight: bold;
+    font-size: 50px;
+  }
+
+  .titre {
+    font-size: 20px;
+  }
+
   .saved-colors {
     margin-left: 50px;
     display: flex;
@@ -76,8 +86,8 @@ body {
   }
 
   .favorite-color {
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
     margin: 5px;
     border-radius: 5px;
     display: inline-block;
