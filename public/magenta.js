@@ -7,7 +7,7 @@ function generateRandomColor() {
   const rgb = hexToRgb(randomColor);
 
   document.getElementById('colorImage').style.backgroundColor = randomColor;
-  
+
   document.getElementById('hexCode').textContent = `Code Hex: ${randomColor}`;
   document.getElementById('rgbCode').textContent = `Code RGB: rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
 
@@ -46,6 +46,7 @@ function getColorName(hex) {
     '#000000': 'Noir',
     '#FFFFFF': 'Blanc',
     '#808080': 'Gris',
+    '#8b0000': 'Rouge foncé',
 
   };
   return colorNames[hex.toUpperCase()] || null;
