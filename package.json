@@ -1,0 +1,15 @@
+{
+  "name": "magenta",
+  "version": "1.0.0",
+  "description": "Mon projet est site web qui permet de générer des couleurs de manière aléatoire. En plus d'une **image de la couleur**, on trouve le **code hexadécimal**, le **code RGB** et le **nom de la couleur**. Il est également possible de sauvegarder ses couleurs préférées.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
