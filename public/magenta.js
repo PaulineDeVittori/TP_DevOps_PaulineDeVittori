@@ -1,4 +1,5 @@
 document.getElementById('generateColorButton').addEventListener('click', generateRandomColor);
+document.getElementById('saveColorButton').addEventListener('click', saveColor);
 
 function generateRandomColor() {
   const randomColor = getRandomColor();
@@ -6,7 +7,7 @@ function generateRandomColor() {
   const rgb = hexToRgb(randomColor);
 
   document.getElementById('colorImage').style.backgroundColor = randomColor;
-
+  
   document.getElementById('hexCode').textContent = `Code Hex: ${randomColor}`;
   document.getElementById('rgbCode').textContent = `Code RGB: rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
 
@@ -14,6 +15,8 @@ function generateRandomColor() {
   document.getElementById('colorName').textContent = `Nom de la couleur: ${colorName || "Inconnu"}`;
 
   document.getElementById('colorDisplay').style.display = 'block';
+
+  document.getElementById('saveColorButton').style.display = 'inline-block';
 }
 
 function getRandomColor() {
@@ -43,8 +46,44 @@ function getColorName(hex) {
     '#000000': 'Noir',
     '#FFFFFF': 'Blanc',
     '#808080': 'Gris',
-    // d'autres couleurs vont être ajoutées
-  };
 
+  };
   return colorNames[hex.toUpperCase()] || null;
 }
+
+function saveColor() {
+  const currentColor = document.getElementById('colorImage').style.backgroundColor;
+  fetch('/favorites', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ color: currentColor }),
+  })
+  .then(response => {
+    if (response.ok) {
+      alert('Couleur ajoutée aux favoris !');
+      loadFavorites(); 
+    } else {
+      alert('Erreur lors de l\'ajout de la couleur');
+    }
+  });
+}
+
+function loadFavorites() {
+  fetch('/favorites')
+    .then(response => response.json())
+    .then(data => {
+      const favoritesContainer = document.getElementById('favoritesContainer');
+      favoritesContainer.innerHTML = '';
+
+      data.forEach(color => {
+        const colorDiv = document.createElement('div');
+        colorDiv.style.backgroundColor = color;
+        colorDiv.classList.add('favorite-color');
+        favoritesContainer.appendChild(colorDiv);
+      });
+    });
+}
+
+loadFavorites();
